@@ -53,6 +53,7 @@
         "yfridelance/accessible_tabs": "*"
     },
     "extra": {
+        "contao-manager-plugin": "BlackForest\\Contao\\AccessibleTabs\\ContaoManager\\Plugin",
         "branch-alias": {
             "dev-master": "1.0.x-dev"
         }
