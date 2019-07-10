@@ -13,7 +13,7 @@
  * @package    contaoblackforest/contao-accessible-tabs-bundle
  * @author     Sven Baumann <baumann.sv@gmail.com>
  * @copyright  2019 The Contao Blackforest team.
- * @license    https://github.com/contaoblackforest/contaoblackforest/contao-accessible-tabs-bundle/blob/master/LICENSE LGPL-3.0
+ * @license    https://github.com/contaoblackforest/contao-accessible-tabs-bundle/blob/master/LICENSE LGPL-3.0
  * @filesource
  */
 
