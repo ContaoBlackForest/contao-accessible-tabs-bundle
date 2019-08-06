@@ -31,6 +31,7 @@ use Contao\CoreBundle\DataContainer\PaletteManipulator;
   */
 
 $GLOBALS['TL_DCA']['tl_content']['config']['onload_callback'][] = [ShowJsLibraryHintListener::class, 'onGenerate'];
+$GLOBALS['TL_DCA']['tl_content']['config']['onload_callback'][] = [ElementFormatter::class, 'onInitialize'];
 
 /*
  * Add palettes.

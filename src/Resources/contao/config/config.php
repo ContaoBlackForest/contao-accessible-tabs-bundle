@@ -20,6 +20,10 @@
 use BlackForest\Contao\AccessibleTabs\Elements\AccessibleTabsSeparator;
 use BlackForest\Contao\AccessibleTabs\Elements\AccessibleTabsStart;
 use BlackForest\Contao\AccessibleTabs\Elements\AccessibleTabsStop;
+use BlackForest\Contao\AccessibleTabs\EventListener\Backend\BackendAccessibleTabsContentListener;
+use BlackForest\Contao\AccessibleTabs\EventListener\Backend\BackendAccessibleTabsSeparatorListener;
+use BlackForest\Contao\AccessibleTabs\EventListener\Backend\BackendAccessibleTabsStartListener;
+use BlackForest\Contao\AccessibleTabs\EventListener\Backend\BackendAccessibleTabsStopListener;
 
 /*
  * Content elements
@@ -28,3 +32,14 @@ use BlackForest\Contao\AccessibleTabs\Elements\AccessibleTabsStop;
 $GLOBALS['TL_CTE']['accessible_tabs']['accessible_tabs_start']     = AccessibleTabsStart::class;
 $GLOBALS['TL_CTE']['accessible_tabs']['accessible_tabs_separator'] = AccessibleTabsSeparator::class;
 $GLOBALS['TL_CTE']['accessible_tabs']['accessible_tabs_stop']      = AccessibleTabsStop::class;
+
+/*
+ * Wrapper elements
+ *
+ * It use own logic for add the backend style of the wrapper elements.
+ */
+
+$GLOBALS['TL_HOOKS']['getContentElement'][] = [BackendAccessibleTabsStartListener::class, 'onGetContentElement'];
+$GLOBALS['TL_HOOKS']['getContentElement'][] = [BackendAccessibleTabsSeparatorListener::class, 'onGetContentElement'];
+$GLOBALS['TL_HOOKS']['getContentElement'][] = [BackendAccessibleTabsStopListener::class, 'onGetContentElement'];
+$GLOBALS['TL_HOOKS']['getContentElement'][] = [BackendAccessibleTabsContentListener::class, 'onGetContentElement'];

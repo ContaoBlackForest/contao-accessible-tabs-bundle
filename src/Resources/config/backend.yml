@@ -1,0 +1,28 @@
+services:
+    cb.accessible_tabs.backend_content.element_formatter:
+        public: false
+        alias: BlackForest\Contao\AccessibleTabs\Formatter\Table\Content\ElementFormatter
+
+    cb.accessible_tabs.backend_listener.backend_accessible_tabs_trait:
+        public: true
+        synthetic: true
+        arguments:
+            - "@request_stack"
+            - "@contao.routing.scope_matcher"
+            - "@cb.accessible_tabs.backend_content.element_formatter"
+
+    BlackForest\Contao\AccessibleTabs\EventListener\Backend\BackendAccessibleTabsStartListener:
+        public: true
+        parent: cb.accessible_tabs.backend_listener.backend_accessible_tabs_trait
+
+    BlackForest\Contao\AccessibleTabs\EventListener\Backend\BackendAccessibleTabsSeparatorListener:
+        public: true
+        parent: cb.accessible_tabs.backend_listener.backend_accessible_tabs_trait
+
+    BlackForest\Contao\AccessibleTabs\EventListener\Backend\BackendAccessibleTabsStopListener:
+        public: true
+        parent: cb.accessible_tabs.backend_listener.backend_accessible_tabs_trait
+
+    BlackForest\Contao\AccessibleTabs\EventListener\Backend\BackendAccessibleTabsContentListener:
+        public: true
+        parent: cb.accessible_tabs.backend_listener.backend_accessible_tabs_trait

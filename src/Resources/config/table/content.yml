@@ -10,3 +10,12 @@ services:
             - '@security.token_storage'
             - "@contao.translation.translator"
             - "@session"
+
+    BlackForest\Contao\AccessibleTabs\Formatter\Table\Content\ElementFormatter:
+        public: true
+        arguments:
+            - "@database_connection"
+            - "@request_stack"
+            - "@twig"
+            - "@filesystem"
+            - "%kernel.project_dir%"

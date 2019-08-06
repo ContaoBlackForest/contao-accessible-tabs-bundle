@@ -1,0 +1,151 @@
+{%- set wrapperStartItems = [] -%}
+{%- set wrapperSeparatorItems = [] -%}
+{%- set wrapperStopItems = [] -%}
+{%- set innerItems = [] -%}
+{%- set sortedItems = [] -%}
+
+{%- for item in items -%}
+{%- set elementSortedIndex = item.element.sortedIndex -%}
+
+{%- if item.element.type is same as('accessible_tabs_start') -%}
+    {%- set wrapperStartItems = wrapperStartItems|merge({ (loop.index0): item }) -%}
+{%- endif -%}
+
+{%- if item.element.type is same as('accessible_tabs_separator') -%}
+    {%- set wrapperSeparatorItems = wrapperSeparatorItems|merge({ (loop.index0): item }) -%}
+{%- endif -%}
+
+{%- if item.element.type is same as('accessible_tabs_stop') -%}
+    {%- set wrapperStopItems = wrapperStopItems|merge({ (loop.index0): item }) -%}
+{%- endif -%}
+
+{%- if item.element.type not in ['accessible_tabs_start', 'accessible_tabs_separator', 'accessible_tabs_stop'] -%}
+    {%- set innerItems = innerItems|merge({ (loop.index0): item }) -%}
+{%- endif -%}
+
+{%- set sortedByIndex = 'sortindex' ~ elementSortedIndex in sortedItems|keys  ? attribute(sortedItems, 'sortindex' ~ elementSortedIndex) : []  -%}
+{%- set sortedByIndex = sortedByIndex|merge({ ('item' ~ item.element.id): (item) })  -%}
+{%- set sortedItems = sortedItems|merge({ ('sortindex' ~ elementSortedIndex): (sortedByIndex) }) -%}
+
+{%- endfor -%}
+
+{% block border_image %}
+{% if sortedItems|length %}
+{% for items in sortedItems %}
+{% if items|length  %}
+{% set firstItem = items|first %}
+{% set lastItem = items|last %}
+{% set borderImageSrc = firstItem.svg.svgImage %}
+{% set borderImageSliceWidth = firstItem.svg.config.gutterWidth * firstItem.element.nested|length %}
+{% set borderImageSliceHeight = firstItem.svg.config.gutterWidth %}
+{% for item in items %}
+#li_{{ item.element.id }}{{ item.element.id == lastItem.element.id ? ' {' : ',' }}
+{% endfor %}
+    border-image-source: url({{ borderImageSrc|raw }});
+    border-image-slice: {{ borderImageSliceHeight }} {{ borderImageSliceWidth }} {{ borderImageSliceHeight }} {{ borderImageSliceWidth }} fill;
+    border-image-outset: 0px {{ borderImageSliceWidth + 15 - firstItem.svg.config.gutterWidth }}px 0px {{ borderImageSliceWidth + 15 - firstItem.svg.config.gutterWidth }}px;
+    border-image-repeat: stretch;
+}
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endblock %}
+{% block border_image_dimension_start_item %}
+{% if wrapperStartItems|length %}
+{% for item in wrapperStartItems %}
+{% set borderImageWidth = item.svg.config.gutterWidth * item.element.nested|length %}
+#li_{{ item.element.id }} {
+    border-image-width: {{ item.svg.config.gutterWidth }}px {{ borderImageWidth }}px 0 {{ borderImageWidth }}px;
+    margin: 0 {{ borderImageWidth - item.svg.config.gutterWidth }}px 0 {{ borderImageWidth - item.svg.config.gutterWidth }}px;
+    padding-top: {{ item.svg.config.thickness }}px;
+}
+{% endfor %}
+{% endif %}
+{% endblock %}
+{% block border_image_dimension_stop_item %}
+{% if wrapperStopItems|length %}
+{% for item in wrapperStopItems %}
+{% set borderImageWidth = item.svg.config.gutterWidth * item.element.nested|length %}
+#li_{{ item.element.id }} {
+    border-image-width: 0 {{ borderImageWidth }}px {{ item.svg.config.gutterWidth }}px {{ borderImageWidth }}px;
+    margin: 0 {{ borderImageWidth - item.svg.config.gutterWidth }}px 0 {{ borderImageWidth - item.svg.config.gutterWidth }}px;
+    padding-bottom: {{ item.svg.config.thickness }}px;
+}
+{% endfor %}
+{% endif %}
+{% endblock %}
+{% block border_image_dimension_inner_item %}
+{% if sortedItems|length %}
+{% for items in sortedItems %}
+{% if items|length %}
+{% set filteredItems = items|filter(item => item.element.type not in ['accessible_tabs_start', 'accessible_tabs_stop']) %}
+{% if filteredItems|length %}
+{% set firstItem = filteredItems|first %}
+{% set lastItem = filteredItems|last %}
+{% set borderImageWidth = firstItem.svg.config.gutterWidth * firstItem.element.nested|length %}
+{% for item in filteredItems %}
+#li_{{ item.element.id }}{{ item.element.id == lastItem.element.id ? ' {' : ',' }}
+{% endfor %}
+    border-image-width: 0 {{ borderImageWidth }}px 0 {{ borderImageWidth }}px;
+    margin: 0 {{ borderImageWidth - firstItem.svg.config.gutterWidth }}px 0 {{ borderImageWidth - firstItem.svg.config.gutterWidth }}px;
+}
+{% endif %}
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endblock %}
+
+{% block background_color_gray %}
+{% set backgroundColorGrayItems = wrapperStartItems|merge(wrapperSeparatorItems|merge(wrapperStopItems)) %}
+{% if backgroundColorGrayItems|length %}
+{% set lastItem = backgroundColorGrayItems|last %}
+{% for item in backgroundColorGrayItems %}
+#li_{{ item.element.id }} .tl_content{{ item.element.id == lastItem.element.id ? ' {' : ',' }}
+{% endfor %}
+    background: #f3f3f5;
+}
+{% endif %}
+{% endblock %}
+
+{% block no_border_bottom %}
+{% set noBorderBottomItems = wrapperStartItems|merge(wrapperSeparatorItems) %}
+{% if noBorderBottomItems|length %}
+{% set lastItem = noBorderBottomItems|last %}
+{% for item in noBorderBottomItems %}
+#li_{{ item.element.id }} .tl_content{{ item.element.id == lastItem.element.id ? ' {' : ',' }}
+{% endfor %}
+    border-bottom: 0;
+}
+{% endif %}
+{% endblock %}
+
+{% block no_border_top %}
+{% set noBorderTopItems = wrapperStopItems|merge(wrapperSeparatorItems) %}
+{% if noBorderTopItems|length %}
+{% set lastItem = noBorderTopItems|last %}
+{% for item in noBorderTopItems %}
+#li_{{ item.element.id }} .tl_content{{ item.element.id == lastItem.element.id ? ' {' : ',' }}
+{% endfor %}
+    border-top: 0;
+}
+{% endif %}
+{% endblock %}
+
+{% block limit_height_elements %}
+{% set notLimitHeightItems = wrapperStartItems|merge(wrapperSeparatorItems|merge(wrapperStopItems)) %}
+{% if notLimitHeightItems|length %}
+{% set lastItem = notLimitHeightItems|last %}
+{% for item in notLimitHeightItems %}
+#li_{{ item.element.id }} .limit_height{{ item.element.id == lastItem.element.id ? ' {' : ',' }}
+{% endfor %}
+    height: inherit !important;
+    overflow: inherit;
+    line-height: inherit;
+}
+{% for item in notLimitHeightItems %}
+#li_{{ item.element.id }} .limit_toggler{{ item.element.id == lastItem.element.id ? ' {' : ',' }}
+{% endfor %}
+    display: none;
+}
+{% endif %}
+{% endblock %}
