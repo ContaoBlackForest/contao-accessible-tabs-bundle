@@ -19,25 +19,24 @@
 
 declare(strict_types=1);
 
-namespace BlackForest\Contao\AccessibleTabs\DependencyInjection;
+namespace BlackForest\Contao\AccessibleTabs\Elements;
 
-use Symfony\Component\Config\FileLocator;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Extension\Extension;
-use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
+use Contao\ContentElement;
 
 /**
- * This loads configuration.
+ * The content element accessible tabs end.
  */
-class BlackForestContaoAccessibleTabsExtension extends Extension
+class AccessibleTabsStop extends ContentElement implements IAccessibleTabs
 {
+    protected $strTemplate = 'ce_accessible_tabs_stop';
+
     /**
-     * {@inheritDoc}
+     * Compile the content element.
+     *
+     * @return void
      */
-    public function load(array $configs, ContainerBuilder $container): void
+    protected function compile(): void
     {
-        $loader = new YamlFileLoader($container, new FileLocator(\dirname(__DIR__) . '/Resources/config'));
-        $loader->load('table/content.yml');
-        $loader->load('services.yml');
+        // Do nothing here.
     }
 }

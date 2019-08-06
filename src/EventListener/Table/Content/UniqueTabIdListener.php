@@ -19,25 +19,26 @@
 
 declare(strict_types=1);
 
-namespace BlackForest\Contao\AccessibleTabs\DependencyInjection;
-
-use Symfony\Component\Config\FileLocator;
-use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Extension\Extension;
-use Symfony\Component\DependencyInjection\Loader\YamlFileLoader;
+namespace BlackForest\Contao\AccessibleTabs\EventListener\Table\Content;
 
 /**
- * This loads configuration.
+ * This generates the unique tab id.
  */
-class BlackForestContaoAccessibleTabsExtension extends Extension
+class UniqueTabIdListener
 {
     /**
-     * {@inheritDoc}
+     * Generate the unique id.
+     *
+     * @param string $value The property value.
+     *
+     * @return string
      */
-    public function load(array $configs, ContainerBuilder $container): void
+    public function onGenerate(string $value): string
     {
-        $loader = new YamlFileLoader($container, new FileLocator(\dirname(__DIR__) . '/Resources/config'));
-        $loader->load('table/content.yml');
-        $loader->load('services.yml');
+        if ($value) {
+            return $value;
+        }
+
+        return \uniqid('tab_',false);
     }
 }

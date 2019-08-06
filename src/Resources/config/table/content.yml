@@ -1,0 +1,12 @@
+services:
+    BlackForest\Contao\AccessibleTabs\EventListener\Table\Content\UniqueTabIdListener:
+        public: true
+
+    BlackForest\Contao\AccessibleTabs\EventListener\Table\Content\ShowJsLibraryHintListener:
+        public: true
+        arguments:
+            - "@database_connection"
+            - "@request_stack"
+            - '@security.token_storage'
+            - "@contao.translation.translator"
+            - "@session"
