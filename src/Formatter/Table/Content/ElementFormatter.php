@@ -189,6 +189,8 @@ class ElementFormatter
      * @param Model $model The model.
      *
      * @return string|null
+     *
+     * @SuppressWarnings(PHPMD.Superglobals)
      */
     public function format(Model $model): ?string
     {
@@ -832,17 +834,16 @@ class ElementFormatter
     {
         $hex = \str_replace('#', '', $hex);
 
+        $rgb = [];
         if (3 === \strlen($hex)) {
-            $r = \hexdec(\substr($hex, 0, 1) . \substr($hex, 0, 1));
-            $g = \hexdec(\substr($hex, 1, 1) . \substr($hex, 1, 1));
-            $b = \hexdec(\substr($hex, 2, 1) . \substr($hex, 2, 1));
+            $rgb['r'] = \hexdec(\substr($hex, 0, 1) . \substr($hex, 0, 1));
+            $rgb['g'] = \hexdec(\substr($hex, 1, 1) . \substr($hex, 1, 1));
+            $rgb['b'] = \hexdec(\substr($hex, 2, 1) . \substr($hex, 2, 1));
         } else {
-            $r = \hexdec(\substr($hex, 0, 2));
-            $g = \hexdec(\substr($hex, 2, 2));
-            $b = \hexdec(\substr($hex, 4, 2));
+            $rgb['r'] = \hexdec(\substr($hex, 0, 2));
+            $rgb['g'] = \hexdec(\substr($hex, 2, 2));
+            $rgb['b'] = \hexdec(\substr($hex, 4, 2));
         }
-
-        $rgb = [$r, $g, $b];
 
         return implode(',', $rgb);
     }
