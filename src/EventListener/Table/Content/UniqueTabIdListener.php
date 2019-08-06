@@ -39,6 +39,6 @@ class UniqueTabIdListener
             return $value;
         }
 
-        return \uniqid('tab_',false);
+        return \uniqid('tab_', false);
     }
 }

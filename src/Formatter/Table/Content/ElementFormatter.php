@@ -434,7 +434,7 @@ class ElementFormatter
         $thickness   = 4;
         $gutterWidth = 10;
 
-        $svgWidth += 2 * $gutterWidth * (\count($element->nested) ?? 1);
+        $svgWidth += (2 * $gutterWidth * (\count($element->nested) ?? 1));
 
         $svg = [
             'width'  => $svgWidth,
@@ -637,7 +637,7 @@ class ElementFormatter
      * @param int    $start       The start index.
      * @param int    $end         The end index.
      * @param int    $pid         The parent id.
-     * @param string $parentTable The parent table-
+     * @param string $parentTable The parent table.
      *
      * @return array|null
      */

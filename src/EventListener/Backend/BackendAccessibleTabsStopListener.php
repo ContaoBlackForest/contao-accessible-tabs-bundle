@@ -44,7 +44,7 @@ class BackendAccessibleTabsStopListener
     public function onGetContentElement(Model $model, string $content, ContentElement $element): string
     {
         if (!($element instanceof AccessibleTabsStop)
-            || !($request =$this->requestStack->getCurrentRequest())
+            || !($request = $this->requestStack->getCurrentRequest())
             || !$this->scopeMatcher->isBackendRequest($request)
         ) {
             return $content;
