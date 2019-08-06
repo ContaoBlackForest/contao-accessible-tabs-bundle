@@ -48,7 +48,12 @@ PaletteManipulator::create()
         ->applyToPalette('accessible_tabs_start', 'tl_content')
 
     ::create()
-        ->addLegend('accessible_tabs_base_legend', 'accessible_tabs_start_legend', PaletteManipulator::POSITION_APPEND)
+        ->addLegend('accessible_tabs_separator_legend', 'accessible_tabs_start_legend', PaletteManipulator::POSITION_APPEND)
+        ->addField(['accessible_tabs_title', 'accessible_tabs_anchor'], '', PaletteManipulator::POSITION_APPEND)
+        ->applyToPalette('accessible_tabs_start', 'tl_content')
+
+    ::create()
+        ->addLegend('accessible_tabs_base_legend', 'accessible_tabs_separator_legend', PaletteManipulator::POSITION_APPEND)
         ->addField(
             [
                 'accessible_tabs_tabhead',
