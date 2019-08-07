@@ -43,3 +43,33 @@ $GLOBALS['TL_HOOKS']['getContentElement'][] = [BackendAccessibleTabsStartListene
 $GLOBALS['TL_HOOKS']['getContentElement'][] = [BackendAccessibleTabsSeparatorListener::class, 'onGetContentElement'];
 $GLOBALS['TL_HOOKS']['getContentElement'][] = [BackendAccessibleTabsStopListener::class, 'onGetContentElement'];
 $GLOBALS['TL_HOOKS']['getContentElement'][] = [BackendAccessibleTabsContentListener::class, 'onGetContentElement'];
+
+/*
+ * The default settings.
+ */
+
+$GLOBALS['TL_CONFIG']['accessible_tabs_tabhead']                 = 'h4';
+$GLOBALS['TL_CONFIG']['accessible_tabs_position']                = 'top';
+$GLOBALS['TL_CONFIG']['accessible_tabs_syncheights']             = false;
+$GLOBALS['TL_CONFIG']['accessible_tabs_sync_height_method_name'] = 'syncHeight';
+$GLOBALS['TL_CONFIG']['accessible_tabs_save_state']              = false;
+$GLOBALS['TL_CONFIG']['accessible_tabs_auto_anchor']             = false;
+$GLOBALS['TL_CONFIG']['accessible_tabs_pagination']              = false;
+$GLOBALS['TL_CONFIG']['accessible_tabs_responsive_toggle_class'] = 'open';
+$GLOBALS['TL_CONFIG']['accessible_tabs_responsive']              = false;
+$GLOBALS['TL_CONFIG']['accessible_tabs_fx']                      = 'show';
+$GLOBALS['TL_CONFIG']['accessible_tabs_fxspeed']                 = 'normal';
+$GLOBALS['TL_CONFIG']['accessible_tabs_wrapper_class']           = 'content';
+$GLOBALS['TL_CONFIG']['accessible_tabs_current_class']           = 'current';
+$GLOBALS['TL_CONFIG']['accessible_tabs_tabhead_class']           = 'tabhead';
+$GLOBALS['TL_CONFIG']['accessible_tabs_tabbody']                 = 'tabbody';
+$GLOBALS['TL_CONFIG']['accessible_tabs_tabs_list_class']         = 'tabs-list';
+$GLOBALS['TL_CONFIG']['accessible_tabs_first_nav_item_class']    = 'first';
+$GLOBALS['TL_CONFIG']['accessible_tabs_last_nav_item_class']     = 'last';
+$GLOBALS['TL_CONFIG']['accessible_tabs_clearfix_class']          = 'block';
+$GLOBALS['TL_CONFIG']['accessible_tabs_css_class_available']     = false;
+$GLOBALS['TL_CONFIG']['accessible_tabs_wrap_inner_nav_links']    = '';
+$GLOBALS['TL_CONFIG']['accessible_tabs_sync_height_method_name'] = 'syncHeight';
+$GLOBALS['TL_CONFIG']['accessible_tabs_current_info_position']   = 'prepend';
+$GLOBALS['TL_CONFIG']['accessible_tabs_current_info_text']       = 'current tab:';
+$GLOBALS['TL_CONFIG']['accessible_tabs_current_info_class']      = 'current-info';

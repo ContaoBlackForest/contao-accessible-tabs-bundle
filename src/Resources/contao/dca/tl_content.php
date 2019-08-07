@@ -17,6 +17,7 @@
  * @filesource
  */
 
+use BlackForest\Contao\AccessibleTabs\Data\DefaultSettings;
 use BlackForest\Contao\AccessibleTabs\EventListener\Table\Content\ShowJsLibraryHintListener;
 use BlackForest\Contao\AccessibleTabs\EventListener\Table\Content\UniqueTabIdListener;
 use BlackForest\Contao\AccessibleTabs\Formatter\Table\Content\ElementFormatter;
@@ -182,7 +183,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge(
         ],
         'accessible_tabs_tabhead' => [
             'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_tabhead'],
-            'default'           => $GLOBALS['TL_CONFIG']['accessible_tabs_tabhead'],
+            'default'           => (new DefaultSettings())->get('tabhead'),
             'exclude'           => true,
             'inputType'         => 'select',
             'options'           => ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
@@ -198,7 +199,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge(
         ],
         'accessible_tabs_position' => [
             'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_position'],
-            'default'           => $GLOBALS['TL_CONFIG']['accessible_tabs_position'],
+            'default'           => (new DefaultSettings())->get('position'),
             'exclude'           => true,
             'inputType'         => 'select',
             'options'           => ['top', 'bottom'],
@@ -214,7 +215,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge(
         ],
         'accessible_tabs_syncheights' => [
             'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_syncheights'],
-            'default'           => $GLOBALS['TL_CONFIG']['accessible_tabs_syncheights'],
+            'default'           => (new DefaultSettings())->get('syncheights'),
             'exclude'           => true,
             'inputType'         => 'checkbox',
             'eval'              => [
@@ -224,7 +225,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge(
         ],
         'accessible_tabs_save_state' => [
             'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_save_state'],
-            'default'           => $GLOBALS['TL_CONFIG']['accessible_tabs_save_state'],
+            'default'           => (new DefaultSettings())->get('saveState'),
             'exclude'           => true,
             'inputType'         => 'checkbox',
             'eval'              => [
@@ -235,7 +236,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge(
         ],
         'accessible_tabs_auto_anchor' => [
             'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_auto_anchor'],
-            'default'           => $GLOBALS['TL_CONFIG']['accessible_tabs_auto_anchor'],
+            'default'           => (new DefaultSettings())->get('autoAnchor'),
             'exclude'           => true,
             'inputType'         => 'checkbox',
             'eval'              => [
@@ -246,7 +247,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge(
         ],
         'accessible_tabs_responsive' => [
             'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_responsive'],
-            'default'           => $GLOBALS['TL_CONFIG']['accessible_tabs_responsive'],
+            'default'           => (new DefaultSettings())->get('responsive'),
             'exclude'           => true,
             'inputType'         => 'checkbox',
             'eval'              => [
@@ -256,7 +257,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge(
         ],
         'accessible_tabs_css_class_available' => [
             'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_css_class_available'],
-            'default'           => $GLOBALS['TL_CONFIG']['accessible_tabs_css_class_available'],
+            'default'           => (new DefaultSettings())->get('cssClassAvailable'),
             'exclude'           => true,
             'inputType'         => 'checkbox',
             'eval'              => [
@@ -267,7 +268,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge(
         ],
         'accessible_tabs_pagination' => [
             'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_pagination'],
-            'default'           => $GLOBALS['TL_CONFIG']['accessible_tabs_pagination'],
+            'default'           => (new DefaultSettings())->get('pagination'),
             'exclude'           => true,
             'inputType'         => 'checkbox',
             'eval'              => [
@@ -278,7 +279,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge(
         ],
         'accessible_tabs_fx' => [
             'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_fx'],
-            'default'           => $GLOBALS['TL_CONFIG']['accessible_tabs_fx'],
+            'default'           => (new DefaultSettings())->get('fx'),
             'exclude'           => true,
             'inputType'         => 'select',
             'options'           => ['show', 'fadeIn'],
@@ -293,7 +294,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge(
         ],
         'accessible_tabs_fxspeed' => [
             'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_fxspeed'],
-            'default'           => $GLOBALS['TL_CONFIG']['accessible_tabs_fxspeed'],
+            'default'           => (new DefaultSettings())->get('fxspeed'),
             'exclude'           => true,
             'inputType'         => 'text',
             'eval'              => [
@@ -304,7 +305,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge(
         ],
         'accessible_tabs_wrapper_class' => [
             'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_wrapper_class'],
-            'default'           => $GLOBALS['TL_CONFIG']['accessible_tabs_wrapper_class'],
+            'default'           => (new DefaultSettings())->get('wrapperClass'),
             'exclude'           => true,
             'inputType'         => 'text',
             'eval'              => [
@@ -315,7 +316,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge(
         ],
         'accessible_tabs_current_class' => [
             'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_current_class'],
-            'default'           => $GLOBALS['TL_CONFIG']['accessible_tabs_current_class'],
+            'default'           => (new DefaultSettings())->get('currentClass'),
             'exclude'           => true,
             'inputType'         => 'text',
             'eval'              => [
@@ -326,7 +327,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge(
         ],
         'accessible_tabs_current_info_position' => [
             'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_current_info_position'],
-            'default'           => $GLOBALS['TL_CONFIG']['accessible_tabs_current_info_position'],
+            'default'           => (new DefaultSettings())->get('currentInfoPosition'),
             'exclude'           => true,
             'inputType'         => 'select',
             'options'           => ['prepend', 'append'],
@@ -342,7 +343,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge(
         ],
         'accessible_tabs_tabhead_class' => [
             'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_tabhead_class'],
-            'default'           => $GLOBALS['TL_CONFIG']['accessible_tabs_tabhead_class'],
+            'default'           => (new DefaultSettings())->get('tabheadClass'),
             'exclude'           => true,
             'inputType'         => 'text',
             'eval'              => [
@@ -353,7 +354,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge(
         ],
         'accessible_tabs_tabbody' => [
             'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_tabbody'],
-            'default'           => $GLOBALS['TL_CONFIG']['accessible_tabs_tabbody'],
+            'default'           => (new DefaultSettings())->get('tabbody'),
             'exclude'           => true,
             'inputType'         => 'text',
             'eval'              => [
@@ -364,7 +365,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge(
         ],
         'accessible_tabs_tabs_list_class' => [
             'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_tabs_list_class'],
-            'default'           => $GLOBALS['TL_CONFIG']['accessible_tabs_tabs_list_class'],
+            'default'           => (new DefaultSettings())->get('tabsListClass'),
             'exclude'           => true,
             'inputType'         => 'text',
             'eval'              => [
@@ -375,7 +376,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge(
         ],
         'accessible_tabs_first_nav_item_class' => [
             'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_first_nav_item_class'],
-            'default'           => $GLOBALS['TL_CONFIG']['accessible_tabs_first_nav_item_class'],
+            'default'           => (new DefaultSettings())->get('firstNavItemClass'),
             'exclude'           => true,
             'inputType'         => 'text',
             'eval'              => [
@@ -387,7 +388,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge(
         ],
         'accessible_tabs_last_nav_item_class' => [
             'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_last_nav_item_class'],
-            'default'           => $GLOBALS['TL_CONFIG']['accessible_tabs_last_nav_item_class'],
+            'default'           => (new DefaultSettings())->get('lastNavItemClass'),
             'exclude'           => true,
             'inputType'         => 'text',
             'eval'              => [
@@ -399,7 +400,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge(
         ],
         'accessible_tabs_clearfix_class' => [
             'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_clearfix_class'],
-            'default'           => $GLOBALS['TL_CONFIG']['accessible_tabs_clearfix_class'],
+            'default'           => (new DefaultSettings())->get('clearfixClass'),
             'exclude'           => true,
             'inputType'         => 'text',
             'eval'              => [
@@ -410,7 +411,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge(
         ],
         'accessible_tabs_wrap_inner_nav_links' => [
             'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_wrap_inner_nav_links'],
-            'default'           => $GLOBALS['TL_CONFIG']['accessible_tabs_wrap_inner_nav_links'],
+            'default'           => (new DefaultSettings())->get('wrapInnerNavLinks'),
             'exclude'           => true,
             'inputType'         => 'checkbox',
             'eval'              => [
@@ -421,7 +422,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge(
         ],
         'accessible_tabs_sync_height_method_name' => [
             'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_sync_height_method_name'],
-            'default'           => $GLOBALS['TL_CONFIG']['accessible_tabs_sync_height_method_name'],
+            'default'           => (new DefaultSettings())->get('syncHeightMethodName'),
             'exclude'           => true,
             'inputType'         => 'text',
             'eval'              => [
