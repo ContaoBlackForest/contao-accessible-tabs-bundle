@@ -71,5 +71,5 @@ $GLOBALS['TL_CONFIG']['accessible_tabs_css_class_available']     = false;
 $GLOBALS['TL_CONFIG']['accessible_tabs_wrap_inner_nav_links']    = '';
 $GLOBALS['TL_CONFIG']['accessible_tabs_sync_height_method_name'] = 'syncHeight';
 $GLOBALS['TL_CONFIG']['accessible_tabs_current_info_position']   = 'prepend';
-$GLOBALS['TL_CONFIG']['accessible_tabs_current_info_text']       = 'current tab:';
+$GLOBALS['TL_CONFIG']['accessible_tabs_current_info_text']       = $GLOBALS['TL_LANG']['tl_accessible_tabs']['accessible_tabs_current_info_text'];
 $GLOBALS['TL_CONFIG']['accessible_tabs_current_info_class']      = 'current-info';

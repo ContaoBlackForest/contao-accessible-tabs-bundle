@@ -44,8 +44,8 @@ $GLOBALS['TL_LANG']['tl_content']['accessible_tabs_fxspeed'][0]                 
 $GLOBALS['TL_LANG']['tl_content']['accessible_tabs_fxspeed'][1]                  = 'The duration of the transition effect - possible values [normal|fast|slow] or ms (jQuery only).';
 $GLOBALS['TL_LANG']['tl_content']['accessible_tabs_wrapper_class'][0]            = 'Class: Overlapping DIV';
 $GLOBALS['TL_LANG']['tl_content']['accessible_tabs_wrapper_class'][1]            = 'Class name of the DIV element wrapping around the original content.';
-$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_current_class'][0]            = 'Class: current tab';
-$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_current_class'][1]            = 'This class is added to the active navigation element.';
+$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_current_info_class'][0]       = 'Class: current tab';
+$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_current_info_class'][1]       = 'This class is added to the active navigation element.';
 $GLOBALS['TL_LANG']['tl_content']['accessible_tabs_current_info_position'][0]    = 'Position of the info';
 $GLOBALS['TL_LANG']['tl_content']['accessible_tabs_current_info_position'][1]    = 'Determines whether the information is output before or after the tab.';
 $GLOBALS['TL_LANG']['tl_content']['accessible_tabs_tabhead_class'][0]            = 'Class: Tab Name';
@@ -85,8 +85,9 @@ $GLOBALS['TL_LANG']['tl_content']['accessible_tabs_start_legend']     = 'Headlin
 $GLOBALS['TL_LANG']['tl_content']['accessible_tabs_base_legend']      = 'Default settings';
 $GLOBALS['TL_LANG']['tl_content']['accessible_tabs_fx_legend']        = 'Transition effects';
 $GLOBALS['TL_LANG']['tl_content']['accessible_tabs_separator_legend'] = 'Separator';
+$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_selectors_legend'] = 'Selectors';
 $GLOBALS['TL_LANG']['tl_content']['accessible_tabs_misc_legend']      = 'Miscellaneous';
 $GLOBALS['TL_LANG']['tl_content']['accessible_tabs_break_legend']     = 'Tab settings';
 
 
-$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_current_info_text'] = 'Aktuelles Tab:';
+$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_current_info_text'] = 'Current Tab:';

@@ -44,8 +44,8 @@ $GLOBALS['TL_LANG']['tl_content']['accessible_tabs_fxspeed'][0]                 
 $GLOBALS['TL_LANG']['tl_content']['accessible_tabs_fxspeed'][1]                  = 'Die Dauer des Übergangeffektes - mögliche werte [normal|fast|slow] oder ms (nur jQuery).';
 $GLOBALS['TL_LANG']['tl_content']['accessible_tabs_wrapper_class'][0]            = 'Klasse: umschlagendes DIV';
 $GLOBALS['TL_LANG']['tl_content']['accessible_tabs_wrapper_class'][1]            = 'Klassenname der um den ursprünglichen Inhalt umschlagenden DIV Element.';
-$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_current_class'][0]            = 'Klasse: aktuelles Tab';
-$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_current_class'][1]            = 'Diese Klasse wird dem aktiven Navigationselement angefügt.';
+$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_current_info_class'][0]       = 'Klasse: aktuelles Tab';
+$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_current_info_class'][1]       = 'Diese Klasse wird dem aktiven Navigationselement angefügt.';
 $GLOBALS['TL_LANG']['tl_content']['accessible_tabs_current_info_position'][0]    = 'Position der Info';
 $GLOBALS['TL_LANG']['tl_content']['accessible_tabs_current_info_position'][1]    = 'Legt fest ob die Information vor oder nach dem Tab ausgegeben wird.';
 $GLOBALS['TL_LANG']['tl_content']['accessible_tabs_tabhead_class'][0]            = 'Klasse: Tab Name';
@@ -85,6 +85,7 @@ $GLOBALS['TL_LANG']['tl_content']['accessible_tabs_start_legend']     = 'Übersc
 $GLOBALS['TL_LANG']['tl_content']['accessible_tabs_base_legend']      = 'Grundeinstellungen';
 $GLOBALS['TL_LANG']['tl_content']['accessible_tabs_fx_legend']        = 'Übergangsefekte';
 $GLOBALS['TL_LANG']['tl_content']['accessible_tabs_separator_legend'] = 'Separator';
+$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_selectors_legend'] = 'Selektoren';
 $GLOBALS['TL_LANG']['tl_content']['accessible_tabs_misc_legend']      = 'Verschiedenes';
 $GLOBALS['TL_LANG']['tl_content']['accessible_tabs_break_legend']     = 'Tab Einstellungen';
 

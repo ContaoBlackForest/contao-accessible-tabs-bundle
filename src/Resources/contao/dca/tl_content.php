@@ -255,6 +255,17 @@ $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge(
             ],
             'sql'               => "char(1) NOT NULL default ''"
         ],
+        'accessible_tabs_responsive_toggle_class' => [
+            'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_responsive_toggle_class'],
+            'default'           => \Contao\System::getContainer()->get(DefaultSettings::class)->get('responsiveToggleClass'),
+            'exclude'           => true,
+            'inputType'         => 'text',
+            'eval'              => [
+                'tl_class'              => 'w50',
+                'maxlength'             => 255
+            ],
+            'sql'               => "varchar(255) NOT NULL default ''"
+        ],
         'accessible_tabs_css_class_available' => [
             'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_css_class_available'],
             'default'           => \Contao\System::getContainer()->get(DefaultSettings::class)->get('cssClassAvailable'),
@@ -316,7 +327,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge(
         ],
         'accessible_tabs_current_info_class' => [
             'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_current_info_class'],
-            'default'           => \Contao\System::getContainer()->get(DefaultSettings::class)->get('currentClass'),
+            'default'           => \Contao\System::getContainer()->get(DefaultSettings::class)->get('currentInfoClass'),
             'exclude'           => true,
             'inputType'         => 'text',
             'eval'              => [
