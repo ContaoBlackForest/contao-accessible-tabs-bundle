@@ -21,15 +21,10 @@ declare(strict_types=1);
 
 namespace BlackForest\Contao\AccessibleTabs\EventListener\Backend;
 
-use BlackForest\Contao\AccessibleTabs\Elements\AccessibleTabsSeparator;
-use BlackForest\Contao\AccessibleTabs\Elements\AccessibleTabsStart;
-use BlackForest\Contao\AccessibleTabs\Elements\AccessibleTabsStop;
 use BlackForest\Contao\AccessibleTabs\Elements\IAccessibleTabs;
-use BlackForest\Contao\AccessibleTabs\Formatter\Table\Content\ElementFormatter;
 use Contao\ContentElement;
-use Contao\CoreBundle\Routing\ScopeMatcher;
+use Contao\Frontend;
 use Contao\Model;
-use Symfony\Component\HttpFoundation\RequestStack;
 
 /**
  * The content element listener for the accessible tabs content element in the backend scope.
