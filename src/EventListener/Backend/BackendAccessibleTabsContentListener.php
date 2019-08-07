@@ -41,13 +41,13 @@ class BackendAccessibleTabsContentListener
     /**
      * Get the content element.
      *
-     * @param Model          $model   The model.
-     * @param string         $content The content.
-     * @param ContentElement $element The element.
+     * @param Model                   $model   The model.
+     * @param string                  $content The content.
+     * @param Frontend|ContentElement $element The element.
      *
      * @return string
      */
-    public function onGetContentElement(Model $model, string $content, ContentElement $element): string
+    public function onGetContentElement(Model $model, string $content, Frontend $element): string
     {
         if (($element instanceof IAccessibleTabs)
             || !($request = $this->requestStack->getCurrentRequest())

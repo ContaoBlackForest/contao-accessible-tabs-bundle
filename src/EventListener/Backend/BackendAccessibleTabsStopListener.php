@@ -23,6 +23,7 @@ namespace BlackForest\Contao\AccessibleTabs\EventListener\Backend;
 
 use BlackForest\Contao\AccessibleTabs\Elements\AccessibleTabsStop;
 use Contao\ContentElement;
+use Contao\Frontend;
 use Contao\Model;
 
 /**
@@ -35,13 +36,13 @@ class BackendAccessibleTabsStopListener
     /**
      * Get the content element.
      *
-     * @param Model          $model   The model.
-     * @param string         $content The content.
-     * @param ContentElement $element The element.
+     * @param Model                   $model   The model.
+     * @param string                  $content The content.
+     * @param Frontend|ContentElement $element The element.
      *
      * @return string
      */
-    public function onGetContentElement(Model $model, string $content, ContentElement $element): string
+    public function onGetContentElement(Model $model, string $content, Frontend $element): string
     {
         if (!($element instanceof AccessibleTabsStop)
             || !($request = $this->requestStack->getCurrentRequest())
