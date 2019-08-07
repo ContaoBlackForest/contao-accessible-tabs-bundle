@@ -34,5 +34,6 @@ class Updater
     public function run(): void
     {
         (new FirstTapInStartElementUpdater())->handle();
+        (new RenameFieldInContentTable())->handle();
     }
 }

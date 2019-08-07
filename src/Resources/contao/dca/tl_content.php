@@ -88,7 +88,7 @@ PaletteManipulator::create()
         ->addField(
             [
                 'accessible_tabs_wrapper_class',
-                'accessible_tabs_current_class',
+                'accessible_tabs_current_info_class',
                 'accessible_tabs_current_info_position',
                 'accessible_tabs_tabhead_class',
                 'accessible_tabs_tabbody',
@@ -314,8 +314,8 @@ $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge(
             ],
             'sql'               => "varchar(255) NOT NULL default ''"
         ],
-        'accessible_tabs_current_class' => [
-            'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_current_class'],
+        'accessible_tabs_current_info_class' => [
+            'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_current_info_class'],
             'default'           => \Contao\System::getContainer()->get(DefaultSettings::class)->get('currentClass'),
             'exclude'           => true,
             'inputType'         => 'text',
