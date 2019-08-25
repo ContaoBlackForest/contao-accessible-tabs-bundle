@@ -91,13 +91,78 @@ class FirstTapInStartElementUpdater
                     $platform->quoteIdentifier('id') => $startElement->id
                 ]
             );
+
             $this->connection->delete(
                 $platform->quoteIdentifier('tl_content'),
                 [
                     $platform->quoteIdentifier('id') => $separatorElement->id
                 ]
             );
+
+            $this->updateSorting($startElement);
         }
+    }
+
+    /**
+     * Update the sorting off all elements after the start element.
+     *
+     * @param \stdClass $startElement
+     *
+     * @return void
+     */
+    private function updateSorting(\stdClass $startElement): void
+    {
+        if (!($elements = $this->fetchAllElementAfterElementBySorting($startElement))) {
+            return;
+        }
+
+        $platform = $this->connection->getDatabasePlatform();
+
+        $sorting = $startElement->sorting + 128;
+        foreach ($elements as $element) {
+            $this->connection->update(
+                $platform->quoteIdentifier('tl_content'),
+                [
+                    $platform->quoteIdentifier('sorting') => $sorting
+                ],
+                [
+                    $platform->quoteIdentifier('id') => $element->id
+                ]
+            );
+
+            $sorting += 128;
+        }
+    }
+
+    /**
+     * Fetch all element after element by sorting.
+     *
+     * @param \stdClass $element The element.
+     *
+     * @return array|null
+     */
+    private function fetchAllElementAfterElementBySorting(\stdClass $element): ?array
+    {
+        $builder = $this->connection->createQueryBuilder();
+        $builder
+            ->select(
+                'c.id'
+            )
+            ->from('tl_content', 'c')
+            ->where($builder->expr()->eq('c.pid', ':identifier'))
+            ->andWhere($builder->expr()->eq('c.ptable', ':ptable'))
+            ->andWhere($builder->expr()->gt('c.sorting', ':start'))
+            ->setParameter(':identifier', $element->pid)
+            ->setParameter(':ptable', $element->ptable)
+            ->setParameter(':start', $element->sorting)
+            ->orderBy('c.sorting');
+
+        $statement = $builder->execute();
+        if (!$statement->rowCount()) {
+            return null;
+        }
+
+        return $statement->fetchAll(\PDO::FETCH_OBJ);
     }
 
     /**
