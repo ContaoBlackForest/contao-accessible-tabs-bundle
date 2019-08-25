@@ -28,3 +28,9 @@ $GLOBALS['TL_LANG']['CTE']['accessible_tabs_separator'][0] = 'Accessible Tabs - 
 $GLOBALS['TL_LANG']['CTE']['accessible_tabs_separator'][1] = 'Generate a new Separator.';
 $GLOBALS['TL_LANG']['CTE']['accessible_tabs_stop'][0]      = 'Accessible Tabs - Wrapper stop';
 $GLOBALS['TL_LANG']['CTE']['accessible_tabs_stop'][1]      = 'Generates the closing part of the Accessible Tabs wrapper.';
+
+/*
+ * Miscellaneous.
+ */
+
+$GLOBALS['TL_LANG']['MSC']['accessible_tabs_current_info_text'] = 'Current Tab:';

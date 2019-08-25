@@ -39,6 +39,7 @@ class BlackForestContaoAccessibleTabsExtension extends Extension
         $loader = new YamlFileLoader($container, new FileLocator(\dirname(__DIR__) . '/Resources/config'));
         $loader->load('table/content.yml');
         $loader->load('backend.yml');
+        $loader->load('frontend.yml');
         $loader->load('services.yml');
     }
 }

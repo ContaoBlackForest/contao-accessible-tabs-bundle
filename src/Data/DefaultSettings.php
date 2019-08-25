@@ -34,6 +34,20 @@ class DefaultSettings
     private $settings = [];
 
     /**
+     * Has a setting.
+     *
+     * @param string $name The setting name.
+     *
+     * @return mixed
+     */
+    public function has(string $name): bool
+    {
+        $this->warmUpSettings();
+
+        return \array_key_exists($name, $this->settings);
+    }
+
+    /**
      * Get a setting.
      *
      * @param string $name The setting name.
@@ -42,20 +56,24 @@ class DefaultSettings
      */
     public function get(string $name)
     {
-        if (!\count($this->settings)) {
-            $this->warmUpSettings();
-        }
+        $this->warmUpSettings();
 
-        return $this->settings[$name] ?? null;
+        return ($this->settings[$name] ?? null);
     }
 
     /**
      * Warm up the settings.
      *
      * @return void
+     *
+     * @SuppressWarnings(PHPMD.Superglobals)
      */
     private function warmUpSettings(): void
     {
+        if (\count($this->settings)) {
+            return;
+        }
+
         $settingKeys = \preg_grep('/^accessible_tabs_/', \array_keys($GLOBALS['TL_CONFIG']));
 
         foreach ($settingKeys as $settingKey) {

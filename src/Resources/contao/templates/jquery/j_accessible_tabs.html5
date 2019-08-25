@@ -1,0 +1,18 @@
+<?php $GLOBALS['TL_JAVASCRIPT']['cb.accessible_tabs.jquery_tabs_js']       = 'bundles/blackforestcontaoaccessibletabs/assets/js/jquery/jquery.tabs.js|static'; ?>
+<?php $GLOBALS['TL_JAVASCRIPT']['cb.accessible_tabs.jquery_cookie_js']     = 'bundles/blackforestcontaoaccessibletabs/assets/js/jquery/jquery.cookie.js|static'; ?>
+<?php $GLOBALS['TL_JAVASCRIPT']['cb.accessible_tabs.jquery_syncheight_js'] = 'bundles/blackforestcontaoaccessibletabs/assets/js/jquery/jquery.syncheight.js|static'; ?>
+
+<script>
+    (function($) {
+        $(document).ready(function(){
+            $(".ce_accessible_tabs").each(function() {
+                var tabs = $(this).accessibleTabs();
+                
+                $("a[href^='#']", this).click(function(e){
+                    e.preventDefault();
+                    tabs.showAccessibleTabSelector($(this).attr("href"));
+                });
+            });
+        });
+    })(jQuery);
+</script>

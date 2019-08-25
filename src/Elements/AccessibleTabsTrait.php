@@ -21,19 +21,39 @@ declare(strict_types=1);
 
 namespace BlackForest\Contao\AccessibleTabs\Elements;
 
-use Contao\ContentElement;
-
 /**
- * The content element accessible tabs end.
+ * This trait is for the accessible tabs content elements.
  */
-class AccessibleTabsStop extends ContentElement implements IAccessibleTabs
+trait AccessibleTabsTrait
 {
-    use AccessibleTabsTrait;
+    /**
+     * Generate the content element.
+     *
+     * @return string
+     */
+    public function generate(): string
+    {
+        // Do nothing here.
+        return '';
+    }
 
     /**
-     * The default template.
+     * Generate the content element with the parent generate method.
      *
-     * @var string
+     * @return string
      */
-    protected $strTemplate = 'ce_accessible_tabs_stop';
+    public function parentGenerate(): string
+    {
+        return parent::generate();
+    }
+
+    /**
+     * Compile the content element.
+     *
+     * @return void
+     */
+    protected function compile(): void
+    {
+        // Do nothing here.
+    }
 }

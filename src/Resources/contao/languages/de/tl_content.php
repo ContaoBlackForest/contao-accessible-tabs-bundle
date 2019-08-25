@@ -66,6 +66,8 @@ $GLOBALS['TL_LANG']['tl_content']['accessible_tabs_wrap_inner_nav_links'][0]    
 $GLOBALS['TL_LANG']['tl_content']['accessible_tabs_wrap_inner_nav_links'][1]     = 'Siehe jQuery Dokumentation http://api.jquery.com/wrapInner.';
 $GLOBALS['TL_LANG']['tl_content']['accessible_tabs_sync_height_method_name'][0]  = 'SyncHeights Methode';
 $GLOBALS['TL_LANG']['tl_content']['accessible_tabs_sync_height_method_name'][1]  = 'Definiert die SyncHeights JS Klasse.';
+$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_current_info_text_field'][0]  = 'Aktulles Tab';
+$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_current_info_text_field'][1]  = 'Hier können Sie deb Text eingeben der vor der Überschrift des aktiven Tabs steht.';
 
 /*
  * Fields separator
@@ -88,6 +90,3 @@ $GLOBALS['TL_LANG']['tl_content']['accessible_tabs_separator_legend'] = 'Separat
 $GLOBALS['TL_LANG']['tl_content']['accessible_tabs_selectors_legend'] = 'Selektoren';
 $GLOBALS['TL_LANG']['tl_content']['accessible_tabs_misc_legend']      = 'Verschiedenes';
 $GLOBALS['TL_LANG']['tl_content']['accessible_tabs_break_legend']     = 'Tab Einstellungen';
-
-
-$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_current_info_text'] = 'Aktuelles Tab:';

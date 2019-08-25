@@ -66,6 +66,8 @@ $GLOBALS['TL_LANG']['tl_content']['accessible_tabs_wrap_inner_nav_links'][0]    
 $GLOBALS['TL_LANG']['tl_content']['accessible_tabs_wrap_inner_nav_links'][1]     = 'See jQuery documentation http://api.jquery.com/wrapInner.';
 $GLOBALS['TL_LANG']['tl_content']['accessible_tabs_sync_height_method_name'][0]  = 'SyncHeights method';
 $GLOBALS['TL_LANG']['tl_content']['accessible_tabs_sync_height_method_name'][1]  = 'Defines the SyncHeights JS class.';
+$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_current_info_text_field'][0]  = 'Current Tab';
+$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_current_info_text_field'][1]  = 'Here you can enter the text that precedes the heading of the active tab.';
 
 /*
  * Fields separator
@@ -88,6 +90,3 @@ $GLOBALS['TL_LANG']['tl_content']['accessible_tabs_separator_legend'] = 'Separat
 $GLOBALS['TL_LANG']['tl_content']['accessible_tabs_selectors_legend'] = 'Selectors';
 $GLOBALS['TL_LANG']['tl_content']['accessible_tabs_misc_legend']      = 'Miscellaneous';
 $GLOBALS['TL_LANG']['tl_content']['accessible_tabs_break_legend']     = 'Tab settings';
-
-
-$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_current_info_text'] = 'Current Tab:';

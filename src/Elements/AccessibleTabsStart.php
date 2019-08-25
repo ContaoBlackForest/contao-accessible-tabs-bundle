@@ -25,18 +25,21 @@ use Contao\ContentElement;
 
 /**
  * The content element accessible tabs start.
+ *
+ * @property string  $firstItem
+ * @property string  $tabhead
+ * @property string  $tabtitle
+ * @property string  $tabbody
+ * @property string  $data
  */
 class AccessibleTabsStart extends ContentElement implements IAccessibleTabs
 {
-    protected $strTemplate = 'ce_accessible_tabs_start';
+    use AccessibleTabsTrait;
 
     /**
-     * Compile the content element.
+     * The default template.
      *
-     * @return void
+     * @var string
      */
-    protected function compile(): void
-    {
-        // Do nothing here.
-    }
+    protected $strTemplate = 'ce_accessible_tabs_start';
 }

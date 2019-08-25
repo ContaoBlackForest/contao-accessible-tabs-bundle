@@ -17,7 +17,6 @@
  * @filesource
  */
 
-use BlackForest\Contao\AccessibleTabs\Data\DefaultSettings;
 use BlackForest\Contao\AccessibleTabs\EventListener\Table\Content\ShowJsLibraryHintListener;
 use BlackForest\Contao\AccessibleTabs\EventListener\Table\Content\UniqueTabIdListener;
 use BlackForest\Contao\AccessibleTabs\Formatter\Table\Content\ElementFormatter;
@@ -64,7 +63,8 @@ PaletteManipulator::create()
                 'accessible_tabs_auto_anchor',
                 'accessible_tabs_responsive',
                 'accessible_tabs_css_class_available',
-                'accessible_tabs_pagination'
+                'accessible_tabs_pagination',
+                'accessible_tabs_current_info_text'
             ],
             '',
             PaletteManipulator::POSITION_APPEND
@@ -183,7 +183,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge(
         ],
         'accessible_tabs_tabhead' => [
             'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_tabhead'],
-            'default'           => \Contao\System::getContainer()->get(DefaultSettings::class)->get('tabhead'),
+            'default'           => \Contao\System::getContainer()->get('cb.accessible_tabs.data.default_settings')->get('tabhead'),
             'exclude'           => true,
             'inputType'         => 'select',
             'options'           => ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'],
@@ -199,7 +199,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge(
         ],
         'accessible_tabs_position' => [
             'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_position'],
-            'default'           => \Contao\System::getContainer()->get(DefaultSettings::class)->get('position'),
+            'default'           => \Contao\System::getContainer()->get('cb.accessible_tabs.data.default_settings')->get('position'),
             'exclude'           => true,
             'inputType'         => 'select',
             'options'           => ['top', 'bottom'],
@@ -215,7 +215,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge(
         ],
         'accessible_tabs_syncheights' => [
             'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_syncheights'],
-            'default'           => \Contao\System::getContainer()->get(DefaultSettings::class)->get('syncheights'),
+            'default'           => \Contao\System::getContainer()->get('cb.accessible_tabs.data.default_settings')->get('syncheights'),
             'exclude'           => true,
             'inputType'         => 'checkbox',
             'eval'              => [
@@ -225,7 +225,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge(
         ],
         'accessible_tabs_save_state' => [
             'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_save_state'],
-            'default'           => \Contao\System::getContainer()->get(DefaultSettings::class)->get('saveState'),
+            'default'           => \Contao\System::getContainer()->get('cb.accessible_tabs.data.default_settings')->get('saveState'),
             'exclude'           => true,
             'inputType'         => 'checkbox',
             'eval'              => [
@@ -236,7 +236,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge(
         ],
         'accessible_tabs_auto_anchor' => [
             'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_auto_anchor'],
-            'default'           => \Contao\System::getContainer()->get(DefaultSettings::class)->get('autoAnchor'),
+            'default'           => \Contao\System::getContainer()->get('cb.accessible_tabs.data.default_settings')->get('autoAnchor'),
             'exclude'           => true,
             'inputType'         => 'checkbox',
             'eval'              => [
@@ -247,7 +247,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge(
         ],
         'accessible_tabs_responsive' => [
             'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_responsive'],
-            'default'           => \Contao\System::getContainer()->get(DefaultSettings::class)->get('responsive'),
+            'default'           => \Contao\System::getContainer()->get('cb.accessible_tabs.data.default_settings')->get('responsive'),
             'exclude'           => true,
             'inputType'         => 'checkbox',
             'eval'              => [
@@ -257,7 +257,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge(
         ],
         'accessible_tabs_responsive_toggle_class' => [
             'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_responsive_toggle_class'],
-            'default'           => \Contao\System::getContainer()->get(DefaultSettings::class)->get('responsiveToggleClass'),
+            'default'           => \Contao\System::getContainer()->get('cb.accessible_tabs.data.default_settings')->get('responsiveToggleClass'),
             'exclude'           => true,
             'inputType'         => 'text',
             'eval'              => [
@@ -268,7 +268,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge(
         ],
         'accessible_tabs_css_class_available' => [
             'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_css_class_available'],
-            'default'           => \Contao\System::getContainer()->get(DefaultSettings::class)->get('cssClassAvailable'),
+            'default'           => \Contao\System::getContainer()->get('cb.accessible_tabs.data.default_settings')->get('cssClassAvailable'),
             'exclude'           => true,
             'inputType'         => 'checkbox',
             'eval'              => [
@@ -279,7 +279,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge(
         ],
         'accessible_tabs_pagination' => [
             'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_pagination'],
-            'default'           => \Contao\System::getContainer()->get(DefaultSettings::class)->get('pagination'),
+            'default'           => \Contao\System::getContainer()->get('cb.accessible_tabs.data.default_settings')->get('pagination'),
             'exclude'           => true,
             'inputType'         => 'checkbox',
             'eval'              => [
@@ -290,7 +290,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge(
         ],
         'accessible_tabs_fx' => [
             'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_fx'],
-            'default'           => \Contao\System::getContainer()->get(DefaultSettings::class)->get('fx'),
+            'default'           => \Contao\System::getContainer()->get('cb.accessible_tabs.data.default_settings')->get('fx'),
             'exclude'           => true,
             'inputType'         => 'select',
             'options'           => ['show', 'fadeIn'],
@@ -305,7 +305,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge(
         ],
         'accessible_tabs_fxspeed' => [
             'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_fxspeed'],
-            'default'           => \Contao\System::getContainer()->get(DefaultSettings::class)->get('fxspeed'),
+            'default'           => \Contao\System::getContainer()->get('cb.accessible_tabs.data.default_settings')->get('fxspeed'),
             'exclude'           => true,
             'inputType'         => 'text',
             'eval'              => [
@@ -316,7 +316,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge(
         ],
         'accessible_tabs_wrapper_class' => [
             'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_wrapper_class'],
-            'default'           => \Contao\System::getContainer()->get(DefaultSettings::class)->get('wrapperClass'),
+            'default'           => \Contao\System::getContainer()->get('cb.accessible_tabs.data.default_settings')->get('wrapperClass'),
             'exclude'           => true,
             'inputType'         => 'text',
             'eval'              => [
@@ -327,7 +327,18 @@ $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge(
         ],
         'accessible_tabs_current_info_class' => [
             'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_current_info_class'],
-            'default'           => \Contao\System::getContainer()->get(DefaultSettings::class)->get('currentInfoClass'),
+            'default'           => \Contao\System::getContainer()->get('cb.accessible_tabs.data.default_settings')->get('currentInfoClass'),
+            'exclude'           => true,
+            'inputType'         => 'text',
+            'eval'              => [
+                'tl_class'              => 'w50',
+                'maxlength'             => 255
+            ],
+            'sql'               => "varchar(255) NOT NULL default ''"
+        ],
+        'accessible_tabs_current_info_text' => [
+            'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_current_info_text_field'],
+            'default'           => \Contao\System::getContainer()->get('cb.accessible_tabs.data.default_settings')->get('currentInfoText'),
             'exclude'           => true,
             'inputType'         => 'text',
             'eval'              => [
@@ -338,7 +349,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge(
         ],
         'accessible_tabs_current_info_position' => [
             'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_current_info_position'],
-            'default'           => \Contao\System::getContainer()->get(DefaultSettings::class)->get('currentInfoPosition'),
+            'default'           => \Contao\System::getContainer()->get('cb.accessible_tabs.data.default_settings')->get('currentInfoPosition'),
             'exclude'           => true,
             'inputType'         => 'select',
             'options'           => ['prepend', 'append'],
@@ -354,7 +365,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge(
         ],
         'accessible_tabs_tabhead_class' => [
             'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_tabhead_class'],
-            'default'           => \Contao\System::getContainer()->get(DefaultSettings::class)->get('tabheadClass'),
+            'default'           => \Contao\System::getContainer()->get('cb.accessible_tabs.data.default_settings')->get('tabheadClass'),
             'exclude'           => true,
             'inputType'         => 'text',
             'eval'              => [
@@ -365,7 +376,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge(
         ],
         'accessible_tabs_tabbody' => [
             'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_tabbody'],
-            'default'           => \Contao\System::getContainer()->get(DefaultSettings::class)->get('tabbody'),
+            'default'           => \Contao\System::getContainer()->get('cb.accessible_tabs.data.default_settings')->get('tabbody'),
             'exclude'           => true,
             'inputType'         => 'text',
             'eval'              => [
@@ -376,7 +387,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge(
         ],
         'accessible_tabs_tabs_list_class' => [
             'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_tabs_list_class'],
-            'default'           => \Contao\System::getContainer()->get(DefaultSettings::class)->get('tabsListClass'),
+            'default'           => \Contao\System::getContainer()->get('cb.accessible_tabs.data.default_settings')->get('tabsListClass'),
             'exclude'           => true,
             'inputType'         => 'text',
             'eval'              => [
@@ -387,7 +398,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge(
         ],
         'accessible_tabs_first_nav_item_class' => [
             'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_first_nav_item_class'],
-            'default'           => \Contao\System::getContainer()->get(DefaultSettings::class)->get('firstNavItemClass'),
+            'default'           => \Contao\System::getContainer()->get('cb.accessible_tabs.data.default_settings')->get('firstNavItemClass'),
             'exclude'           => true,
             'inputType'         => 'text',
             'eval'              => [
@@ -399,7 +410,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge(
         ],
         'accessible_tabs_last_nav_item_class' => [
             'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_last_nav_item_class'],
-            'default'           => \Contao\System::getContainer()->get(DefaultSettings::class)->get('lastNavItemClass'),
+            'default'           => \Contao\System::getContainer()->get('cb.accessible_tabs.data.default_settings')->get('lastNavItemClass'),
             'exclude'           => true,
             'inputType'         => 'text',
             'eval'              => [
@@ -411,7 +422,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge(
         ],
         'accessible_tabs_clearfix_class' => [
             'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_clearfix_class'],
-            'default'           => \Contao\System::getContainer()->get(DefaultSettings::class)->get('clearfixClass'),
+            'default'           => \Contao\System::getContainer()->get('cb.accessible_tabs.data.default_settings')->get('clearfixClass'),
             'exclude'           => true,
             'inputType'         => 'text',
             'eval'              => [
@@ -422,7 +433,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge(
         ],
         'accessible_tabs_wrap_inner_nav_links' => [
             'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_wrap_inner_nav_links'],
-            'default'           => \Contao\System::getContainer()->get(DefaultSettings::class)->get('wrapInnerNavLinks'),
+            'default'           => \Contao\System::getContainer()->get('cb.accessible_tabs.data.default_settings')->get('wrapInnerNavLinks'),
             'exclude'           => true,
             'inputType'         => 'checkbox',
             'eval'              => [
@@ -433,7 +444,7 @@ $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge(
         ],
         'accessible_tabs_sync_height_method_name' => [
             'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_sync_height_method_name'],
-            'default'           => \Contao\System::getContainer()->get(DefaultSettings::class)->get('syncHeightMethodName'),
+            'default'           => \Contao\System::getContainer()->get('cb.accessible_tabs.data.default_settings')->get('syncHeightMethodName'),
             'exclude'           => true,
             'inputType'         => 'text',
             'eval'              => [

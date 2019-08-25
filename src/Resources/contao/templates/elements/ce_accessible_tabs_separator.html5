@@ -1,0 +1,5 @@
+<?php $this->extend('block_accessible_tabs_body'); ?>
+
+<?php $this->block('before'); ?>
+</div>
+<?php $this->endblock(); ?>

@@ -24,6 +24,9 @@ use BlackForest\Contao\AccessibleTabs\EventListener\Backend\BackendAccessibleTab
 use BlackForest\Contao\AccessibleTabs\EventListener\Backend\BackendAccessibleTabsSeparatorListener;
 use BlackForest\Contao\AccessibleTabs\EventListener\Backend\BackendAccessibleTabsStartListener;
 use BlackForest\Contao\AccessibleTabs\EventListener\Backend\BackendAccessibleTabsStopListener;
+use BlackForest\Contao\AccessibleTabs\EventListener\Frontend\FrontendAccessibleTabsSeparatorListener;
+use BlackForest\Contao\AccessibleTabs\EventListener\Frontend\FrontendAccessibleTabsStartListener;
+use BlackForest\Contao\AccessibleTabs\EventListener\Frontend\FrontendAccessibleTabsStopListener;
 
 /*
  * Content elements
@@ -43,6 +46,13 @@ $GLOBALS['TL_HOOKS']['getContentElement'][] = [BackendAccessibleTabsStartListene
 $GLOBALS['TL_HOOKS']['getContentElement'][] = [BackendAccessibleTabsSeparatorListener::class, 'onGetContentElement'];
 $GLOBALS['TL_HOOKS']['getContentElement'][] = [BackendAccessibleTabsStopListener::class, 'onGetContentElement'];
 $GLOBALS['TL_HOOKS']['getContentElement'][] = [BackendAccessibleTabsContentListener::class, 'onGetContentElement'];
+
+/*
+ * Frontend elements hooks listener
+ */
+$GLOBALS['TL_HOOKS']['getContentElement'][] = [FrontendAccessibleTabsStartListener::class, 'onGetContentElement'];
+$GLOBALS['TL_HOOKS']['getContentElement'][] = [FrontendAccessibleTabsSeparatorListener::class, 'onGetContentElement'];
+$GLOBALS['TL_HOOKS']['getContentElement'][] = [FrontendAccessibleTabsStopListener::class, 'onGetContentElement'];
 
 /*
  * The default settings.
@@ -71,5 +81,5 @@ $GLOBALS['TL_CONFIG']['accessible_tabs_css_class_available']     = false;
 $GLOBALS['TL_CONFIG']['accessible_tabs_wrap_inner_nav_links']    = '';
 $GLOBALS['TL_CONFIG']['accessible_tabs_sync_height_method_name'] = 'syncHeight';
 $GLOBALS['TL_CONFIG']['accessible_tabs_current_info_position']   = 'prepend';
-$GLOBALS['TL_CONFIG']['accessible_tabs_current_info_text']       = $GLOBALS['TL_LANG']['tl_accessible_tabs']['accessible_tabs_current_info_text'];
+$GLOBALS['TL_CONFIG']['accessible_tabs_current_info_text']       = &$GLOBALS['TL_LANG']['MSC']['accessible_tabs_current_info_text'];
 $GLOBALS['TL_CONFIG']['accessible_tabs_current_info_class']      = 'current-info';
