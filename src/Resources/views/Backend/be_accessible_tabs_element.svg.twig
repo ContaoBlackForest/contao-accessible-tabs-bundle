@@ -1,0 +1,68 @@
+{%- macro vertical_line(item, svg, config, level, transform = false) -%}
+    {%- set firstLevel = svg.levels|keys|first -%}
+    {%- set spaceX = firstLevel is same as(level) ? 0 : ( level - 1 ) * config.gutterWidth -%}
+    {%- set translateX = spaceX ? svg.width - spaceX - config.thickness - ( config.gutterWidth * ( level - 1 ) ) : svg.width - config.thickness -%}
+    <path fill="{{ item.color }}" d="M {{ spaceX }} 0 h {{ config.thickness }} v {{ svg.height }} h -{{ config.thickness }} Z"{{ (transform ? ' transform="translate(' ~ translateX  ~ ', 0)"'  : '')|raw }}/>
+{%- endmacro -%}
+
+{%- macro corner(item, svg, config, level, mirror = null) -%}
+    {%- set firstLevel = svg.levels|keys|first -%}
+    {%- set spaceX = firstLevel is same as(level) ? 0 : ( level - 1 ) * config.gutterWidth -%}
+    {%- set transform = false -%}
+    {%- set translateX = 0 -%}
+    {%- set translateY = 0 -%}
+    {%- set scaleX = 0 -%}
+    {%- set scaleY = 0 -%}
+
+    {%- if mirror is same as('y')  -%}
+    {%- set transform = true -%}
+    {%- set scaleX = -1 -%}
+    {%- set scaleY = 1 -%}
+    {%- set translateX = -svg.width -%}
+    {%- endif  -%}
+
+    {%- if mirror is same as('x')  -%}
+    {%- set transform = true -%}
+    {%- set scaleX = 1 -%}
+    {%- set scaleY = -1 -%}
+    {%- set translateY = -svg.height -%}
+    {%- endif  -%}
+
+    {%- if mirror is same as('xy')  -%}
+    {%- set transform = true -%}
+    {%- set scaleX = -1 -%}
+    {%- set scaleY = -1 -%}
+    {%- set translateX = -svg.width -%}
+    {%- set translateY = -svg.height -%}
+    {%- endif  -%}
+
+    <path fill="{{ item.color }}" d="M {{ spaceX }} 0 v {{ svg.height * 0.5 }} h {{ config.thickness }} v -{{ (svg.height * 0.5) - config.thickness }} h {{ config.thickness * 1.55 }} v -{{ config.thickness }} Z"{{ (transform ? ' transform="scale(' ~ scaleX ~ ', ' ~ scaleY ~ ') translate(' ~ translateX  ~ ', ' ~ translateY ~ ')"'  : '')|raw }}/>
+{%- endmacro -%}
+
+{% block svg %}
+<svg xmlns="http://www.w3.org/2000/svg" width="{{ svg.width }}px" height="{{ svg.height }}px" viewBox="0 0 {{ svg.width }} {{ svg.height }}" version="1.1">
+    <g stroke="none" stroke-width="1" fill="none">
+    {% for level, item in svg.levels -%}
+        {%- set renderVertical = true -%}
+
+        {%- if item.isOpen -%}
+        {%- set renderVertical = false -%}
+        {{ _self.corner(item, svg, config, level) }}
+        {{ _self.corner(item, svg, config, level, 'y') }}
+        {%- endif -%}
+
+        {%- if item.isClosed -%}
+        {%- set renderVertical = false -%}
+        {{ _self.corner(item, svg, config, level, 'x') }}
+        {{ _self.corner(item, svg, config, level, 'xy') }}
+        {%- endif -%}
+
+        {%- if renderVertical is same as(true) -%}
+        {{ _self.vertical_line(item, svg, config, level) }}
+        {{ _self.vertical_line(item, svg, config, level, true) }}
+        {%- endif -%}
+
+    {% endfor -%}
+    </g>
+</svg>
+{% endblock %}

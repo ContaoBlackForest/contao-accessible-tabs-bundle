@@ -1,0 +1,10 @@
+services:
+    cb.accessible_tabs.data.default_settings:
+        class: BlackForest\Contao\AccessibleTabs\Data\DefaultSettings
+        public: true
+
+    cb.accessible_tabs.data.element_information:
+        class: BlackForest\Contao\AccessibleTabs\Data\ElementInformation
+        public: true
+        arguments:
+            - "@database_connection"

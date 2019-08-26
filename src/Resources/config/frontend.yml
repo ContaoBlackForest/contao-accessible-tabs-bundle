@@ -1,0 +1,21 @@
+services:
+    cb.accessible_tabs.frontend_listener.frontend_accessible_tabs_trait:
+        public: true
+        synthetic: true
+        arguments:
+            - "@request_stack"
+            - "@contao.routing.scope_matcher"
+            - "@cb.accessible_tabs.data.default_settings"
+            - "@cb.accessible_tabs.data.element_information"
+
+    BlackForest\Contao\AccessibleTabs\EventListener\Frontend\FrontendAccessibleTabsStartListener:
+        public: true
+        parent: cb.accessible_tabs.frontend_listener.frontend_accessible_tabs_trait
+
+    BlackForest\Contao\AccessibleTabs\EventListener\Frontend\FrontendAccessibleTabsSeparatorListener:
+        public: true
+        parent: cb.accessible_tabs.frontend_listener.frontend_accessible_tabs_trait
+
+    BlackForest\Contao\AccessibleTabs\EventListener\Frontend\FrontendAccessibleTabsStopListener:
+        public: true
+        parent: cb.accessible_tabs.frontend_listener.frontend_accessible_tabs_trait

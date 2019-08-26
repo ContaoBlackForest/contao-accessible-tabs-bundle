@@ -1,0 +1,13 @@
+<?php $this->block('before'); ?>
+<?php $this->endblock(); ?>
+
+<?php $this->block('tab-head'); ?>
+<<?= $this->tabhead ?><?= $this->class ? ' class="' . $this->class . '"' : '' ?><?= $this->id ? ' id="' . $this->id . '"' : '' ?>><?= $this->tabtitle ?></<?= $this->tabhead ?>>
+<?php $this->endblock(); ?>
+
+<?php $this->block('tab-body'); ?>
+<div class="<?= $this->tabbody ?>">
+<?php $this->endblock(); ?>
+
+<?php $this->block('append'); ?>
+<?php $this->endblock(); ?>

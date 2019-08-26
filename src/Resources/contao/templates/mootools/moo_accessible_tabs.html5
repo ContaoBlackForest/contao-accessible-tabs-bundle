@@ -1,0 +1,13 @@
+<?php
+$GLOBALS['TL_JAVASCRIPT']['cb.accessible_tabs.mootools_tabs_js']       = 'bundles/blackforestcontaoaccessibletabs/assets/js/mootools/mootools.tabs.js|static';
+$GLOBALS['TL_JAVASCRIPT']['cb.accessible_tabs.mootools_syncheight_js'] = 'bundles/blackforestcontaoaccessibletabs/assets/js/mootools/mootools.syncheight.js|static';
+?>
+<script>
+    (function($) {
+        window.addEvent('domready', function() {
+            $$('.ce_accessible_tabs').each(function(cte) {
+                new AccessibleTabs(cte);
+            })
+        });
+    })(document.id)
+</script>

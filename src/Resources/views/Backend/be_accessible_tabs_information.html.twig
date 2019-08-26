@@ -1,0 +1,9 @@
+{% block information %}
+{% if titles|length > 0 %}
+    <div style="display: flex; margin-top: 12px;">
+        {% for titleId, titleName in titles %}
+            <div style="padding: 20px; margin-right: 2px; border: 1px #808080 dashed; background-color: rgba({{ color }}, {% if titleId == id %}1{% else %}.1{% endif %})">{{ titleName }}</div>
+        {% endfor %}
+    </div>
+{% endif %}
+{% endblock %}

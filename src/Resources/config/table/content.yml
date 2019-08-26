@@ -1,0 +1,34 @@
+services:
+    BlackForest\Contao\AccessibleTabs\EventListener\Table\Content\UniqueTabIdListener:
+        public: true
+
+    BlackForest\Contao\AccessibleTabs\EventListener\Table\Content\ShowJsLibraryHintListener:
+        public: true
+        arguments:
+            - "@database_connection"
+            - "@request_stack"
+            - '@security.token_storage'
+            - "@contao.translation.translator"
+            - "@session"
+
+    BlackForest\Contao\AccessibleTabs\Formatter\Table\Content\ElementFormatter:
+        public: true
+        arguments:
+            - "@database_connection"
+            - "@request_stack"
+            - "@twig"
+            - "@filesystem"
+            - "%kernel.project_dir%"
+
+    BlackForest\Contao\AccessibleTabs\EventListener\Table\Content\AddSeparatorPropertyListener:
+        public: true
+        arguments:
+            - "@request_stack"
+            - "@session"
+
+    BlackForest\Contao\AccessibleTabs\EventListener\Table\Content\AddNewElementListener:
+        public: true
+        arguments:
+            - "@database_connection"
+            - "@request_stack"
+            - "@session"
