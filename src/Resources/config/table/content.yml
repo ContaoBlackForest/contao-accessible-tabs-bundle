@@ -19,3 +19,16 @@ services:
             - "@twig"
             - "@filesystem"
             - "%kernel.project_dir%"
+
+    BlackForest\Contao\AccessibleTabs\EventListener\Table\Content\AddSeparatorPropertyListener:
+        public: true
+        arguments:
+            - "@request_stack"
+            - "@session"
+
+    BlackForest\Contao\AccessibleTabs\EventListener\Table\Content\AddNewElementListener:
+        public: true
+        arguments:
+            - "@database_connection"
+            - "@request_stack"
+            - "@session"

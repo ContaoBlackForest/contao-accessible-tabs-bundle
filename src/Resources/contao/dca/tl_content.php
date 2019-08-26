@@ -17,6 +17,8 @@
  * @filesource
  */
 
+use BlackForest\Contao\AccessibleTabs\EventListener\Table\Content\AddNewElementListener;
+use BlackForest\Contao\AccessibleTabs\EventListener\Table\Content\AddSeparatorPropertyListener;
 use BlackForest\Contao\AccessibleTabs\EventListener\Table\Content\ShowJsLibraryHintListener;
 use BlackForest\Contao\AccessibleTabs\EventListener\Table\Content\UniqueTabIdListener;
 use BlackForest\Contao\AccessibleTabs\Formatter\Table\Content\ElementFormatter;
@@ -30,8 +32,10 @@ use Contao\CoreBundle\DataContainer\PaletteManipulator;
   * Config
   */
 
-$GLOBALS['TL_DCA']['tl_content']['config']['onload_callback'][] = [ShowJsLibraryHintListener::class, 'onGenerate'];
-$GLOBALS['TL_DCA']['tl_content']['config']['onload_callback'][] = [ElementFormatter::class, 'onInitialize'];
+$GLOBALS['TL_DCA']['tl_content']['config']['onload_callback'][]   = [AddSeparatorPropertyListener::class, 'onAddProperty'];
+$GLOBALS['TL_DCA']['tl_content']['config']['onload_callback'][]   = [ShowJsLibraryHintListener::class, 'onGenerate'];
+$GLOBALS['TL_DCA']['tl_content']['config']['onload_callback'][]   = [ElementFormatter::class, 'onInitialize'];
+$GLOBALS['TL_DCA']['tl_content']['config']['onsubmit_callback'][] = [AddNewElementListener::class, 'onAddNewElement'];
 
 /*
  * Add palettes.
@@ -476,6 +480,26 @@ $GLOBALS['TL_DCA']['tl_content']['fields'] = array_merge(
                 'doNotCopy'             => true
             ],
             'sql'               => "varchar(255) NOT NULL default ''"
+        ],
+        'accessible_tabs_add_separator' => [
+            'label'             => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_add_separator'],
+            'exclude'           => true,
+            'inputType'         => 'cb.accessible_tabs.be_ffl_mcw_nsi',
+            'eval'              => [
+                'mandatory'             => true,
+                'tl_class'              => 'w50',
+                'columnFields'          => [
+                    'separator'                 => [
+                        'label'                         => &$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_add_separator_separator'],
+                        'exclude'                       => true,
+                        'inputType'                     => 'text',
+                        'eval'                          => [
+                            'style'                             => 'width:100%',
+                            'mandatory'                         => true
+                        ]
+                    ]
+                ]
+            ]
         ]
     ]
 );

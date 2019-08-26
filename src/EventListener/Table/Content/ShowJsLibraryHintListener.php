@@ -34,19 +34,14 @@ use Symfony\Component\Translation\TranslatorInterface;
  */
 class ShowJsLibraryHintListener
 {
+    use BaseOnLoadListener;
+
     /**
      * The doctrine dbal connection.
      *
      * @var Connection
      */
     private $connection;
-
-    /**
-     * The request stack.
-     *
-     * @var RequestStack
-     */
-    private $requestStack;
 
     /**
      * The token storage.
@@ -152,9 +147,9 @@ class ShowJsLibraryHintListener
      *
      * @param int $identifier The element id.
      *
-     * @return mixed
+     * @return bool
      */
-    private function fetchStartElement(int $identifier)
+    private function fetchStartElement(int $identifier): bool
     {
         $builder = $this->connection->createQueryBuilder();
         $builder
@@ -165,20 +160,6 @@ class ShowJsLibraryHintListener
             ->setParameter(':identifier', $identifier)
             ->setParameter(':type', 'accessible_tabs_start');
 
-        return $builder->execute()->fetch();
-    }
-
-    /**
-     * Evaluate the request.
-     *
-     * @return bool
-     */
-    private function evaluateRequest(): bool
-    {
-        $request = $this->requestStack->getCurrentRequest();
-
-        return $request
-               && $request->query->has('act')
-               && \in_array($request->query->get('act'), ['create', 'edit']);
+        return (bool) $builder->execute()->fetch();
     }
 }

@@ -68,6 +68,10 @@ $GLOBALS['TL_LANG']['tl_content']['accessible_tabs_sync_height_method_name'][0] 
 $GLOBALS['TL_LANG']['tl_content']['accessible_tabs_sync_height_method_name'][1]  = 'Defines the SyncHeights JS class.';
 $GLOBALS['TL_LANG']['tl_content']['accessible_tabs_current_info_text_field'][0]  = 'Current Tab';
 $GLOBALS['TL_LANG']['tl_content']['accessible_tabs_current_info_text_field'][1]  = 'Here you can enter the text that precedes the heading of the active tab.';
+$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_add_separator'][0]            = 'Add separator';
+$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_add_separator'][1]            = 'The separators are added here.';
+$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_add_separator_separator'][0]  = '';
+$GLOBALS['TL_LANG']['tl_content']['accessible_tabs_add_separator_separator'][1]  = '';
 
 /*
  * Fields separator

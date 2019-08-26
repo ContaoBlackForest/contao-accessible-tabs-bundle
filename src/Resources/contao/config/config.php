@@ -27,6 +27,7 @@ use BlackForest\Contao\AccessibleTabs\EventListener\Backend\BackendAccessibleTab
 use BlackForest\Contao\AccessibleTabs\EventListener\Frontend\FrontendAccessibleTabsSeparatorListener;
 use BlackForest\Contao\AccessibleTabs\EventListener\Frontend\FrontendAccessibleTabsStartListener;
 use BlackForest\Contao\AccessibleTabs\EventListener\Frontend\FrontendAccessibleTabsStopListener;
+use BlackForest\Contao\AccessibleTabs\Widgets\MultiColumnWizardNonSubmitInput;
 
 /*
  * Content elements
@@ -50,9 +51,16 @@ $GLOBALS['TL_HOOKS']['getContentElement'][] = [BackendAccessibleTabsContentListe
 /*
  * Frontend elements hooks listener
  */
+
 $GLOBALS['TL_HOOKS']['getContentElement'][] = [FrontendAccessibleTabsStartListener::class, 'onGetContentElement'];
 $GLOBALS['TL_HOOKS']['getContentElement'][] = [FrontendAccessibleTabsSeparatorListener::class, 'onGetContentElement'];
 $GLOBALS['TL_HOOKS']['getContentElement'][] = [FrontendAccessibleTabsStopListener::class, 'onGetContentElement'];
+
+/*
+ * Backend form field
+ */
+
+$GLOBALS['BE_FFL']['cb.accessible_tabs.be_ffl_mcw_nsi'] = MultiColumnWizardNonSubmitInput::class;
 
 /*
  * The default settings.
