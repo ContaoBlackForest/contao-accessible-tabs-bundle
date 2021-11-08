@@ -17,7 +17,7 @@
  */
 
 (function($) {
-    var debugMode = true;
+    var debugMode = false;
     $.fn.extend({
         // We assume there could be multiple sets of tabs on a page, so,
         // the unique id for each invididual tab's heading is identified with params q and r (e.g., id="accessibletabscontent0-2")
@@ -88,7 +88,7 @@
             if($("body").data('accessibleTabsCount') !== undefined){
                 tabsCount = $("body").data('accessibleTabsCount');
             }
-            $("body").data('accessibleTabsCount',this.size()+tabsCount);
+            $("body").data('accessibleTabsCount',this.length+tabsCount);
 
             var o = this;
             return this.each(function(t) {
@@ -218,7 +218,7 @@
 
                 if(o.options.autoAnchor && window.location.hash){
                     var anchorTab = $('.'+o.options.tabsListClass).find(window.location.hash);
-                    if(anchorTab.size()){
+                    if(anchorTab.length){
                         anchorTab.click();
                     }
                 }
@@ -229,7 +229,7 @@
                     m +='    <li class="next"><a href="#{nextAnchor}"><span>{nextHeadline}</span></a></li>';
                     m +='</ul>';
                     var tabs = $(el).find('.tabbody');
-                    var tabcount = tabs.size();
+                    var tabcount = tabs.length;
                     tabs.each(function(idx){
                         $(this).append(m);
                         var next = idx+1;
